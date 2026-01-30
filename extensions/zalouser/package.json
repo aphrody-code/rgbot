@@ -1,0 +1,33 @@
+{
+  "name": "@rgbot/zalouser",
+  "version": "2026.1.29",
+  "type": "module",
+  "description": "Rose Griffon Bot Zalo Personal Account plugin via zca-cli",
+  "dependencies": {
+    "rgbot": "workspace:*",
+    "@sinclair/typebox": "0.34.47"
+  },
+  "rgbot": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "channel": {
+      "id": "zalouser",
+      "label": "Zalo Personal",
+      "selectionLabel": "Zalo (Personal Account)",
+      "docsPath": "/channels/zalouser",
+      "docsLabel": "zalouser",
+      "blurb": "Zalo personal account via QR code login.",
+      "aliases": [
+        "zlu"
+      ],
+      "order": 85,
+      "quickstartAllowFrom": true
+    },
+    "install": {
+      "npmSpec": "@rgbot/zalouser",
+      "localPath": "extensions/zalouser",
+      "defaultChoice": "npm"
+    }
+  }
+}

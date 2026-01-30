@@ -1,0 +1,11 @@
+{
+  "name": "@rgbot/discord",
+  "version": "2026.1.29",
+  "type": "module",
+  "description": "Rose Griffon Bot Discord channel plugin",
+  "rgbot": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

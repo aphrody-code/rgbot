@@ -1,0 +1,11 @@
+{
+  "name": "@rgbot/slack",
+  "version": "2026.1.29",
+  "type": "module",
+  "description": "Rose Griffon Bot Slack channel plugin",
+  "rgbot": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

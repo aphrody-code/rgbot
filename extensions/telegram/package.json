@@ -1,0 +1,11 @@
+{
+  "name": "@rgbot/telegram",
+  "version": "2026.1.29",
+  "type": "module",
+  "description": "Rose Griffon Bot Telegram channel plugin",
+  "rgbot": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

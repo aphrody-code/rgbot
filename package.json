@@ -1,0 +1,181 @@
+{
+  "name": "@rosegriffon/rg-bot",
+  "version": "2026.1.29",
+  "description": "Rose Griffon Discord Bot (Fork of Moltbot)",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./plugin-sdk": "./dist/plugin-sdk/index.js",
+    "./plugin-sdk/*": "./dist/plugin-sdk/*",
+    "./cli-entry": "./rgbot.mjs"
+  },
+  "bin": {
+    "rgbot": "./rgbot.mjs",
+    "clawdbot": "./rgbot.mjs"
+  },
+  "files": [
+    "dist/**",
+    "assets/**",
+    "rgbot.mjs",
+    "skills/**",
+    "patches/**",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "scripts/postinstall.js",
+    "scripts/format-staged.js",
+    "scripts/setup-git-hooks.js",
+    "git-hooks/**"
+  ],
+  "scripts": {
+    "dev": "node scripts/run-node.mjs",
+    "postinstall": "node scripts/postinstall.js",
+    "prepack": "pnpm build && pnpm ui:build",
+    "build": "pnpm canvas:a2ui:bundle && tsc -p tsconfig.json && node --import tsx scripts/canvas-a2ui-copy.ts && node --import tsx scripts/copy-hook-metadata.ts && node --import tsx scripts/write-build-info.ts",
+    "plugins:sync": "node --import tsx scripts/sync-plugin-versions.ts",
+    "ui:install": "node scripts/ui.js install",
+    "ui:dev": "node scripts/ui.js dev",
+    "ui:build": "node scripts/ui.js build",
+    "start": "node scripts/run-node.mjs",
+    "rgbot": "node scripts/run-node.mjs",
+    "gateway:watch": "node scripts/watch-node.mjs gateway --force",
+    "gateway:dev": "CLAWDBOT_SKIP_CHANNELS=1 node scripts/run-node.mjs --dev gateway",
+    "rgbot:rpc": "node scripts/run-node.mjs agent --mode rpc --json",
+    "lint": "oxlint --type-aware src test",
+    "lint:fix": "pnpm format:fix && oxlint --type-aware --fix src test",
+    "format": "oxfmt --check src test",
+    "format:fix": "oxfmt --write src test",
+    "test": "node scripts/test-parallel.mjs",
+    "test:watch": "vitest",
+    "test:ui": "pnpm --dir ui test",
+    "test:force": "node --import tsx scripts/test-force.ts",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "vitest run --config vitest.e2e.config.ts",
+    "protocol:gen": "node --import tsx scripts/protocol-gen.ts",
+    "canvas:a2ui:bundle": "bash scripts/bundle-a2ui.sh",
+    "check:loc": "node --import tsx scripts/check-ts-max-loc.ts --max 500"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "@agentclientprotocol/sdk": "0.13.1",
+    "@aws-sdk/client-bedrock": "^3.975.0",
+    "@buape/carbon": "0.14.0",
+    "@clack/prompts": "^0.11.0",
+    "@grammyjs/runner": "^2.0.3",
+    "@grammyjs/transformer-throttler": "^1.2.1",
+    "@homebridge/ciao": "^1.3.4",
+    "@line/bot-sdk": "^10.6.0",
+    "@lydell/node-pty": "1.2.0-beta.3",
+    "@mariozechner/pi-agent-core": "0.49.3",
+    "@mariozechner/pi-ai": "0.49.3",
+    "@mariozechner/pi-coding-agent": "0.49.3",
+    "@mariozechner/pi-tui": "0.49.3",
+    "@mozilla/readability": "^0.6.0",
+    "@sinclair/typebox": "0.34.47",
+    "@slack/bolt": "^4.6.0",
+    "@slack/web-api": "^7.13.0",
+    "@whiskeysockets/baileys": "7.0.0-rc.9",
+    "ajv": "^8.17.1",
+    "body-parser": "^2.2.2",
+    "chalk": "^5.6.2",
+    "chokidar": "^5.0.0",
+    "chromium-bidi": "13.0.1",
+    "cli-highlight": "^2.1.11",
+    "commander": "^14.0.2",
+    "croner": "^9.1.0",
+    "detect-libc": "^2.1.2",
+    "discord-api-types": "^0.38.37",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "file-type": "^21.3.0",
+    "grammy": "^1.39.3",
+    "hono": "4.11.4",
+    "jiti": "^2.6.1",
+    "json5": "^2.2.3",
+    "jszip": "^3.10.1",
+    "linkedom": "^0.18.12",
+    "long": "5.3.2",
+    "markdown-it": "^14.1.0",
+    "node-edge-tts": "^1.2.9",
+    "osc-progress": "^0.3.0",
+    "pdfjs-dist": "^5.4.530",
+    "playwright-core": "1.58.0",
+    "proper-lockfile": "^4.1.2",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.34.5",
+    "sqlite-vec": "0.1.7-alpha.2",
+    "tar": "7.5.4",
+    "tslog": "^4.10.2",
+    "undici": "^7.19.0",
+    "ws": "^8.19.0",
+    "yaml": "^2.8.2",
+    "zod": "^4.3.6"
+  },
+  "optionalDependencies": {
+    "@napi-rs/canvas": "^0.1.88",
+    "node-llama-cpp": "3.15.0"
+  },
+  "devDependencies": {
+    "@grammyjs/types": "^3.23.0",
+    "@lit-labs/signals": "^0.2.0",
+    "@lit/context": "^1.1.6",
+    "@mariozechner/mini-lit": "0.2.1",
+    "@types/body-parser": "^1.19.6",
+    "@types/express": "^5.0.6",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^25.0.10",
+    "@types/proper-lockfile": "^4.1.4",
+    "@types/qrcode-terminal": "^0.12.2",
+    "@types/ws": "^8.18.1",
+    "@typescript/native-preview": "7.0.0-dev.20260124.1",
+    "@vitest/coverage-v8": "^4.0.18",
+    "docx-preview": "^0.3.7",
+    "lit": "^3.3.2",
+    "lucide": "^0.563.0",
+    "ollama": "^0.6.3",
+    "oxfmt": "0.26.0",
+    "oxlint": "^1.41.0",
+    "oxlint-tsgolint": "^0.11.1",
+    "quicktype-core": "^23.2.6",
+    "rolldown": "1.0.0-rc.1",
+    "signal-utils": "^0.21.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18",
+    "wireit": "^0.14.12"
+  },
+  "overrides": {
+    "tar": "7.5.4"
+  },
+  "vitest": {
+    "coverage": {
+      "provider": "v8",
+      "reporter": [
+        "text",
+        "lcov"
+      ],
+      "thresholds": {
+        "lines": 70,
+        "functions": 70,
+        "branches": 70,
+        "statements": 70
+      },
+      "include": [
+        "src/**/*.ts"
+      ],
+      "exclude": [
+        "src/**/*.test.ts"
+      ]
+    },
+    "include": [
+      "src/**/*.test.ts"
+    ],
+    "exclude": [
+      "dist/**",
+      "**/vendor/**"
+    ]
+  }
+}

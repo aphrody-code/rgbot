@@ -1,0 +1,11 @@
+{
+  "name": "@rgbot/copilot-proxy",
+  "version": "2026.1.29",
+  "type": "module",
+  "description": "Rose Griffon Bot Copilot Proxy provider plugin",
+  "rgbot": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

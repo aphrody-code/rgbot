@@ -1,0 +1,25 @@
+{
+  "name": "@rgbot/mattermost",
+  "version": "2026.1.29",
+  "type": "module",
+  "description": "Rose Griffon Bot Mattermost channel plugin",
+  "rgbot": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "channel": {
+      "id": "mattermost",
+      "label": "Mattermost",
+      "selectionLabel": "Mattermost (plugin)",
+      "docsPath": "/channels/mattermost",
+      "docsLabel": "mattermost",
+      "blurb": "self-hosted Slack-style chat; install the plugin to enable.",
+      "order": 65
+    },
+    "install": {
+      "npmSpec": "@rgbot/mattermost",
+      "localPath": "extensions/mattermost",
+      "defaultChoice": "npm"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@rgbot/llm-task",
+  "version": "2026.1.29",
+  "type": "module",
+  "description": "Rose Griffon Bot JSON-only LLM task plugin",
+  "rgbot": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

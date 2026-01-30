@@ -1,0 +1,17 @@
+{
+  "name": "@rgbot/memory-core",
+  "version": "2026.1.29",
+  "type": "module",
+  "description": "Rose Griffon Bot core memory search plugin",
+  "rgbot": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "peerDependencies": {
+    "rgbot": ">=2026.1.26"
+  },
+  "devDependencies": {
+    "rgbot": "workspace:*"
+  }
+}
